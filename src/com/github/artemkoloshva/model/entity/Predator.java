@@ -1,4 +1,4 @@
-package com.github.artemkoloshva.models;
+package com.github.artemkoloshva.model.entity;
 
 public abstract class Predator extends Creature {
     public Predator(int healthPoints, int speed) {

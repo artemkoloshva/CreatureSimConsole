@@ -1,4 +1,7 @@
-package com.github.artemkoloshva.models;
+package com.github.artemkoloshva.model;
+
+import com.github.artemkoloshva.model.entity.Position;
+import com.github.artemkoloshva.model.entity.Entity;
 
 import java.util.HashMap;
 
