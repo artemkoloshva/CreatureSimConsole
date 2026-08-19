@@ -1,8 +1,8 @@
 package com.github.artemkoloshva.model.entity;
 
-public abstract class Creature extends Entity implements Attackable{
-    private int healthPoints;
+public abstract class Creature extends Entity implements Attackable {
     private final int speed;
+    private int healthPoints;
 
     public Creature(int healthPoints, int speed) {
         this.healthPoints = healthPoints;
