@@ -1,0 +1,7 @@
+entities:
+  Tree:
+    symbol: "🌲"
+  Rock:
+    symbol: "⛰️"
+  Grass:
+    symbol: ""
