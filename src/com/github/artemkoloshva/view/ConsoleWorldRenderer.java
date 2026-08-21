@@ -1,5 +1,6 @@
 package com.github.artemkoloshva.view;
 
+import com.github.artemkoloshva.core.registry.Registry;
 import com.github.artemkoloshva.model.World;
 import com.github.artemkoloshva.model.Position;
 import com.github.artemkoloshva.model.entity.Entity;
@@ -9,9 +10,11 @@ public class ConsoleWorldRenderer extends WorldRenderer {
     public static final String BG_GREEN = "\u001B[42m";
     private static final String BG_DEFAULT = "\u001B[49m";
     public static final String RESET = "\u001B[0m";
+    public final Registry<Class<? extends Entity>, String> registry;
 
-    public ConsoleWorldRenderer(World world) {
+    public ConsoleWorldRenderer(World world, Registry<Class<? extends Entity>, String> registry) {
         super(world);
+        this.registry = registry;
     }
 
     @Override
@@ -32,7 +35,7 @@ public class ConsoleWorldRenderer extends WorldRenderer {
     }
 
     private void printEntity(Entity entity) {
-        String text = SpriteRegistry.getSymbol(entity);
+        String text = registry.get(entity.getClass());
 
         printColor(formatToCellWidth(text, CELL_WIDTH));
     }

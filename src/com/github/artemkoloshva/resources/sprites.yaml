@@ -1,7 +1,7 @@
 entities:
   Tree:
-    symbol: "🌲"
+    sprite: "🌲"
   Rock:
-    symbol: "⛰️"
-  Grass:
-    symbol: ""
+    sprite: "⛰️"
+  Mushroom:
+    sprite: "🍄"
