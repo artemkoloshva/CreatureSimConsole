@@ -1,9 +1,9 @@
 package com.github.artemkoloshva.model.entity;
 
-public class Grass extends Entity implements Edible {
+public class Mushroom extends Entity implements Edible {
     private boolean isEaten;
 
-    public Grass() {
+    public Mushroom() {
         isEaten = false;
     }
 
