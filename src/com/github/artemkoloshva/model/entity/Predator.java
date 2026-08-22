@@ -1,9 +1,9 @@
 package com.github.artemkoloshva.model.entity;
 
 public abstract class Predator extends Creature implements Attacker {
-    private final double damage;
+    protected final double damage;
 
-    public Predator(int healthPoints, int speed, double damage) {
+    protected Predator(double healthPoints, int speed, double damage) {
         super(healthPoints, speed);
         this.damage = damage;
     }

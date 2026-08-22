@@ -1,7 +1,7 @@
 package com.github.artemkoloshva.model.entity;
 
 public abstract class Herbivore extends Creature implements Eater{
-    public Herbivore(int healthPoints, int speed) {
+    protected Herbivore(double healthPoints, int speed) {
         super(healthPoints, speed);
     }
 
