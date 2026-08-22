@@ -1,7 +1,0 @@
-entities:
-  Tree:
-    sprite: "🌲"
-  Rock:
-    sprite: "⛰️"
-  Mushroom:
-    sprite: "🍄"

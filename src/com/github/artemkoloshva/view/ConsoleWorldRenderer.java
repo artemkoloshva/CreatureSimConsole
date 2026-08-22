@@ -6,10 +6,10 @@ import com.github.artemkoloshva.model.Position;
 import com.github.artemkoloshva.model.entity.Entity;
 
 public class ConsoleWorldRenderer extends WorldRenderer {
-    private static final int CELL_WIDTH = 3;
     public static final String BG_GREEN = "\u001B[42m";
     private static final String BG_DEFAULT = "\u001B[49m";
-    public static final String RESET = "\u001B[0m";
+    private static final String EMPTY = " ";
+
     public final Registry<Class<? extends Entity>, String> registry;
 
     public ConsoleWorldRenderer(World world, Registry<Class<? extends Entity>, String> registry) {
@@ -24,9 +24,12 @@ public class ConsoleWorldRenderer extends WorldRenderer {
                 Position position = new Position(x, y);
 
                 if (world.contains(position)) {
-                    printEntity(world.getEntity(position));
+                    Entity entity = world.getEntity(position);
+                    String sprite = registry.get(entity.getClass());
+
+                    printColor(sprite);
                 } else {
-                    printColor(formatToCellWidth(" ", CELL_WIDTH));
+                    printColor(EMPTY);
                 }
             }
 
@@ -34,25 +37,8 @@ public class ConsoleWorldRenderer extends WorldRenderer {
         }
     }
 
-    private void printEntity(Entity entity) {
-        String text = registry.get(entity.getClass());
-
-        printColor(formatToCellWidth(text, CELL_WIDTH));
-    }
-
-    private String formatToCellWidth(String text, int cellWidth) {
-        if (cellWidth <= 0) {
-            return text;
-        }
-
-        if (text.length() >= cellWidth) {
-            return text.substring(0, cellWidth);
-        }
-
-        return String.format("%-" + cellWidth + "s", text);
-    }
-
     private void printColor(String text) {
-        System.out.printf("%s%s%s",BG_GREEN, text, BG_DEFAULT);
+        System.out.printf("%s%3s%s",
+                BG_GREEN, text, BG_DEFAULT);
     }
 }

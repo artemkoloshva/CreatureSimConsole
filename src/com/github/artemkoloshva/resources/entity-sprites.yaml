@@ -1,0 +1,15 @@
+entities:
+  Tree:
+    sprite: "🌳"
+  Rock:
+    sprite: "⛰️"
+  Grass:
+    sprite: "🌾"
+  Wolf:
+    sprite: "🐺"
+  Rabbit:
+    sprite: "🐇"
+  Fox:
+    sprite: "🦊"
+  Deer:
+    sprite: "🦌"

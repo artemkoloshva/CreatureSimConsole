@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpriteMappingStrategy implements MappingStrategy<Class<? extends Entity>, String> {
-    private static final String PATH_TO_ENTITY_PACKAGE = "com.github.artemkoloshva.model.entity.";
+    private static final String PATH_TO_ENTITY_PACKAGE = "com.github.artemkoloshva.model.entity.concrete.";
 
     @Override
     @SuppressWarnings("unchecked")
