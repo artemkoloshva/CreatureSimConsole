@@ -1,4 +1,4 @@
-package com.github.artemkoloshva.model.entity.concrete;
+package com.github.artemkoloshva.model.entity.environment;
 
 import com.github.artemkoloshva.model.entity.Entity;
 

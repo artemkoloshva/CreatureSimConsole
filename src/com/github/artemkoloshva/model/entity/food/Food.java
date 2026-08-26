@@ -1,12 +1,12 @@
-package com.github.artemkoloshva.model.entity.concrete;
+package com.github.artemkoloshva.model.entity.food;
 
 import com.github.artemkoloshva.model.entity.Edible;
 import com.github.artemkoloshva.model.entity.Entity;
 
-public class Grass extends Entity implements Edible {
+public abstract class Food extends Entity implements Edible {
     private boolean isEaten;
 
-    public Grass() {
+    public Food() {
         isEaten = false;
     }
 

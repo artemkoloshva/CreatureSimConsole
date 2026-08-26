@@ -3,9 +3,10 @@ package com.github.artemkoloshva.model;
 import com.github.artemkoloshva.model.entity.Entity;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class World {
-    private final HashMap<Position, Entity> entities = new HashMap<>();
+    private final Map<Position, Entity> entities = new HashMap<>();
     private final int width;
     private final int height;
 
@@ -36,5 +37,16 @@ public class World {
 
     public void removeEntity(Position position) {
         entities.remove(position);
+    }
+
+    public boolean isValid(Position position) {
+        if (position == null) {
+            return false;
+        }
+
+        int x = position.x();
+        int y = position.y();
+
+        return x >= 0 && x < width && y >= 0 && y < height;
     }
 }
