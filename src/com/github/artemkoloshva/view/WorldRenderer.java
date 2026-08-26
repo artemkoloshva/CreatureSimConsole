@@ -8,6 +8,4 @@ public abstract class WorldRenderer implements Renderer{
     public WorldRenderer(World world) {
         this.world = world;
     }
-
-    public abstract void render();
 }
