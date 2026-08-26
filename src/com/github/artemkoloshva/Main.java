@@ -5,7 +5,9 @@ import com.github.artemkoloshva.core.registry.SpriteRegistry;
 import com.github.artemkoloshva.core.strategy.SpriteMappingStrategy;
 import com.github.artemkoloshva.model.Position;
 import com.github.artemkoloshva.model.entity.*;
-import com.github.artemkoloshva.model.entity.concrete.*;
+import com.github.artemkoloshva.model.entity.environment.Rock;
+import com.github.artemkoloshva.model.entity.environment.Tree;
+import com.github.artemkoloshva.utils.*;
 import com.github.artemkoloshva.view.ConsoleWorldRenderer;
 import com.github.artemkoloshva.model.World;
 import com.github.artemkoloshva.view.Renderer;
@@ -15,32 +17,16 @@ void main() {
     RegistryLoader<Class<? extends Entity>, String> loader = new YamlRegistryLoader<>(registry,
             "com\\github\\artemkoloshva\\resources\\entity-sprites.yaml",
             new SpriteMappingStrategy());
-    World world = new World(20, 20);
+    World world = new World(10, 10);
     Renderer renderer = new ConsoleWorldRenderer(world, registry);
 
-    for (int y = 0; y < world.getHeight(); y++) {
-        for (int x = 0; x < world.getWidth(); x++) {
-            world.addEntity(new Position(x, 0), new Rock());
-            world.addEntity(new Position(0, y), new Rock());
-            world.addEntity(new Position(world.getWidth() - 1, y), new Rock());
-            world.addEntity(new Position(x, world.getHeight() - 1), new Rock());
-        }
+    for (int i = 0; i < 15; i++) {
+        randomSpawnEntity(world, new Tree());
+        randomSpawnEntity(world, new Rock());
     }
 
-    world.addEntity(new Position(1, 1), new Tree());
-    world.addEntity(new Position(1, 5), new Tree());
-    world.addEntity(new Position(5, 1), new Tree());
-    world.addEntity(new Position(1, 2), new Tree());
-
-    world.addEntity(new Position(1, 7), new Grass());
-    world.addEntity(new Position(8, 1), new Grass());
-    world.addEntity(new Position(10, 1), new Grass());
-    world.addEntity(new Position(1, 11), new Grass());
-
-    world.addEntity(new Position(5, 6), new Fox(10, 1, 5));
-    world.addEntity(new Position(3, 4), new Rabbit(2, 2));
-    world.addEntity(new Position(10, 10), new Wolf(30, 1, 10));
-    world.addEntity(new Position(9, 15), new Deer(50, 2));
+    world.removeEntity(new Position(0, 0));
+    world.removeEntity(new Position(world.getWidth(), world.getHeight()));
 
     try{
         loader.load();
@@ -49,4 +35,31 @@ void main() {
     }
 
     renderer.render();
+
+    WorldPathFinder pathFinder = new AstarWorldPathFinder(world);
+
+    printPositions(pathFinder.findPath(new Position(0,0), new Position(world.getWidth() - 1, world.getHeight() - 1)));
+}
+
+public static void randomSpawnEntity(World world, Entity entity) {
+    Random random = new Random();
+
+    Position position = new Position(random.nextInt(0, world.getWidth()),
+            random.nextInt(0, world.getHeight()));
+
+    world.addEntity(position, entity);
+}
+
+public static void printPositions(List<Position> positions) {
+    if (positions == null || positions.isEmpty()) {
+        System.out.println("Список позиций пуст.");
+        return;
+    }
+
+    System.out.println("--- Список позиций ---");
+    for (int i = 0; i < positions.size(); i++) {
+        Position pos = positions.get(i);
+        System.out.printf("[%d] x: %d, y: %d%n", i, pos.x(), pos.y());
+    }
+    System.out.println("----------------------");
 }
