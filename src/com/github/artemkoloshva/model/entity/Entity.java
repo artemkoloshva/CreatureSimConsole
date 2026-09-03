@@ -1,8 +1,11 @@
 package com.github.artemkoloshva.model.entity;
 
+import com.github.artemkoloshva.model.Position;
+
 import java.util.Objects;
 
 public abstract class Entity {
+    protected Position position;
     private static int nextId = 1;
     private int id;
 
@@ -11,8 +14,22 @@ public abstract class Entity {
         nextId++;
     }
 
+    protected Entity(Position position) {
+        this.position = position;
+        id = nextId;
+        nextId++;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     @Override
@@ -23,11 +40,11 @@ public abstract class Entity {
 
         Entity entity = (Entity) o;
 
-        return id == entity.id;
+        return id == entity.id && Objects.equals(position, entity.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(position, id);
     }
 }

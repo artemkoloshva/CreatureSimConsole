@@ -1,6 +1,6 @@
 package com.github.artemkoloshva.view;
 
-import com.github.artemkoloshva.core.registry.Registry;
+import com.github.artemkoloshva.utils.registry.Registry;
 import com.github.artemkoloshva.model.World;
 import com.github.artemkoloshva.model.Position;
 import com.github.artemkoloshva.model.entity.Entity;

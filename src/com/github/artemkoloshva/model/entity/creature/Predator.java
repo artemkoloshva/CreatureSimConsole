@@ -13,7 +13,7 @@ public abstract class Predator extends Creature implements Attacker {
                        double damage,
                        int speed,
                        int detectionRange,
-                       List<Class<? extends Entity>> targets) {
+                       Class<? extends Entity>... targets) {
         super(healthPoints, speed, detectionRange, targets);
         this.damage = damage;
     }

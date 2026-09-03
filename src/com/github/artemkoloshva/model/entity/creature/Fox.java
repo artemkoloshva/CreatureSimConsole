@@ -9,7 +9,7 @@ public class Fox extends Predator {
                double damage,
                int speed,
                int detectionRange,
-               List<Class<? extends Entity>> targets) {
+               Class<? extends Entity>... targets) {
         super(healthPoints, damage, speed, detectionRange, targets);
     }
 }

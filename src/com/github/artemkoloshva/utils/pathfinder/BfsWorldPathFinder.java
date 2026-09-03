@@ -1,4 +1,4 @@
-package com.github.artemkoloshva.utils;
+package com.github.artemkoloshva.utils.pathfinder;
 
 import com.github.artemkoloshva.model.Position;
 import com.github.artemkoloshva.model.World;
@@ -38,20 +38,16 @@ public class BfsWorldPathFinder extends WorldPathFinder {
                 int newY = current.position.y() + dy[i];
                 Position neighborPosition = new Position(newX, newY);
 
-                if (!world.isValid(neighborPosition)) {
-                    continue;
-                }
-
-                if (world.contains(neighborPosition)) {
-                    continue;
-                }
-
-                if (visited.contains(neighborPosition)) {
+                if (!world.isValid(neighborPosition)
+                        || (world.contains(neighborPosition) && !neighborPosition.equals(end))
+                        || visited.contains(neighborPosition)) {
                     continue;
                 }
 
                 if (neighborPosition.equals(end)) {
-                    return reconstructPath(new Node(neighborPosition, current));
+                    return world.contains(neighborPosition)
+                            ? reconstructPath(current)
+                            : reconstructPath(new Node(neighborPosition, current));
                 }
 
                 visited.add(neighborPosition);

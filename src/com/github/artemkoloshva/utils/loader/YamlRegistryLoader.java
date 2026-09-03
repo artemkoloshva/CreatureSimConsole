@@ -1,7 +1,7 @@
-package com.github.artemkoloshva.core.loader;
+package com.github.artemkoloshva.utils.loader;
 
-import com.github.artemkoloshva.core.registry.Registry;
-import com.github.artemkoloshva.core.strategy.MappingStrategy;
+import com.github.artemkoloshva.utils.registry.Registry;
+import com.github.artemkoloshva.utils.strategy.MappingStrategy;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;

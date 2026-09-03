@@ -1,4 +1,4 @@
-package com.github.artemkoloshva.core.registry;
+package com.github.artemkoloshva.utils.registry;
 
 import com.github.artemkoloshva.model.entity.Entity;
 

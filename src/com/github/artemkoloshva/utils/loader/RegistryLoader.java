@@ -1,6 +1,6 @@
-package com.github.artemkoloshva.core.loader;
+package com.github.artemkoloshva.utils.loader;
 
-import com.github.artemkoloshva.core.registry.Registry;
+import com.github.artemkoloshva.utils.registry.Registry;
 
 public abstract class RegistryLoader<K, V> {
     protected final Registry<K, V> registry;

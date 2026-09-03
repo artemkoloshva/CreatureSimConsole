@@ -1,4 +1,4 @@
-package com.github.artemkoloshva.core.strategy;
+package com.github.artemkoloshva.utils.strategy;
 
 import java.util.Map;
 

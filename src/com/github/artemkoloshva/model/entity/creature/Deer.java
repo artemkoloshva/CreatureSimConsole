@@ -8,7 +8,7 @@ public class Deer extends Herbivore {
     public Deer(double healthPoints,
                 int speed,
                 int detectionRange,
-                List<Class<? extends Entity>> targets) {
+                Class<? extends Entity>... targets) {
         super(healthPoints, speed, detectionRange, targets);
     }
 }

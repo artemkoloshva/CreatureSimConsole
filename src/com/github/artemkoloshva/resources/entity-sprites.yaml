@@ -13,3 +13,5 @@ entities:
     sprite: "🦊"
   Deer:
     sprite: "🦌"
+  Mushroom:
+    sprite: "🍄"

@@ -1,4 +1,4 @@
-package com.github.artemkoloshva.utils;
+package com.github.artemkoloshva.utils.pathfinder;
 
 import com.github.artemkoloshva.model.Position;
 import com.github.artemkoloshva.model.World;
@@ -53,11 +53,9 @@ public class AstarWorldPathFinder extends WorldPathFinder {
                 int newY = currentPosition.y() + dy[i];
                 Position neighborPosition = new Position(newX, newY);
 
-                if (!world.isValid(neighborPosition) || world.contains(neighborPosition)) {
-                    continue;
-                }
-
-                if (closedSet.contains(neighborPosition)) {
+                if (!world.isValid(neighborPosition)
+                        || (world.contains(neighborPosition) && !neighborPosition.equals(end))
+                        || closedSet.contains(neighborPosition)) {
                     continue;
                 }
 
