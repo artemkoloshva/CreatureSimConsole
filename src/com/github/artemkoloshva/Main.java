@@ -45,7 +45,7 @@ void main() {
         turnActions.add(new AttackAction(world));
         turnActions.add(new EatAction(world));
 
-        SimulationController simulation = new SimulationController(world, renderer, initActions, turnActions);
+        SimulationController simulation = new SimulationController(world, renderer, 20, initActions, turnActions);
         simulation.startSimulation();
     } catch (Exception e) {
         throw new RuntimeException(e);
